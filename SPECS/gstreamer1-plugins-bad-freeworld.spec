@@ -4,14 +4,14 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.0.6
+Version:        1.4.5
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.0.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.0.0
+BuildRequires:  gstreamer1-devel >= 1.4.5
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.4.5
 BuildRequires:  check
 BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
@@ -45,8 +45,8 @@ well enough, or the code is not of good enough quality.
 # Note we don't bother with disabling everything which is in Fedora, that
 # is unmaintainable, instead we selectively run make in subdirs
 %configure \
-    --with-package-name="gst-plugins-bad 1.0 rpmfusion rpm" \
-    --with-package-origin="http://rpmfusion.org/" \
+    --with-package-name="DeskOS GStreamer-plugins-bad-freeworld package" \
+    --with-package-origin="https://deskosproject.org/" \
     --enable-debug --disable-static --enable-experimental
 # Don't use rpath!
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
@@ -68,7 +68,8 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %files
-%doc AUTHORS COPYING.LIB NEWS README RELEASE
+%doc AUTHORS NEWS README RELEASE
+%license COPYING.LIB
 # Take the whole dir for proper dir ownership (shared with other plugin pkgs)
 %{_datadir}/gstreamer-1.0
 
@@ -91,6 +92,10 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sun Nov 13 2016 Ricardo Arguello <rarguello@deskosproject.org> - 1.4.5-1
+- Rebuilt for DeskOS
+- Upgraded to 1.4.5
+
 * Mon Mar 25 2013 Hans de Goede <j.w.r.degoede@gmail.com> - 1.0.6-1
 - New upstream release 1.0.6
 
